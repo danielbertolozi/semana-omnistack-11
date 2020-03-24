@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/main/index.js"
+    "start": "nodemon src/main/index.js",
+    "generate-db": "npx knex migrate:latest"
   },
   "keywords": [],
   "author": "",
