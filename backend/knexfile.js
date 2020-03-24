@@ -6,7 +6,11 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './src/main/database/db.sqlite'
-    }
+    },
+    migrations: {
+      directory: "./src/main/database/migrations"
+    },
+    useNullAsDefault: true
   },
 
   staging: {
