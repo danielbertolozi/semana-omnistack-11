@@ -15,8 +15,14 @@ module.exports = {
     return response.json({ id });
   },
   async index(req, response) {
-    const result = await connection("incidents").select("*");
-    return response.json(result);
+    const { page = 1 } = req.query;
+    const incidents = await connection("incidents")
+      .select("*")
+      .limit(5)
+      .offset((page - 1) * 5);
+    const [count] = await connection("incidents").count();
+    response.header("X-Total-Count", count["count(*)"]);
+    return response.json(incidents);
   },
   async delete(req, response) {
     const { id } = req.params;
@@ -34,7 +40,7 @@ module.exports = {
     await connection("incidents")
       .where("id", id)
       .delete();
-    
+
     return response.status(204).send();
   }
 };
