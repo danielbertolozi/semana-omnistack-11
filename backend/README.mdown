@@ -4,5 +4,5 @@ Application developed during RocketSeat's OmniStack 11.
 
 Helpful links:
 
-[Knex](http://knexjs.org/)
-[Express](https://expressjs.com/)
+* [Knex](http://knexjs.org/)
+* [Express](https://expressjs.com/)
