@@ -1,8 +1,10 @@
 const express = require("express");
-const routes = require("./routes/ONGs");
+const ongRoutes = require("./routes/ONGs");
+const incidentRoutes = require("./routes/Incidents");
 const app = express();
 app.use(express.json());
 
-app.use(routes);
+app.use(ongRoutes);
+app.use(incidentRoutes);
 
 app.listen(3333);
