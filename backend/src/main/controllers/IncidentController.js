@@ -17,7 +17,15 @@ module.exports = {
   async index(req, response) {
     const { page = 1 } = req.query;
     const incidents = await connection("incidents")
-      .select("*")
+      .join("ongs", "ongs.id", "=", "incidents.ong_id")
+      .select([
+        "incidents.*",
+        "ongs.name",
+        "ongs.email",
+        "ongs.whatsapp",
+        "ongs.city",
+        "ongs.uf"
+      ])
       .limit(5)
       .offset((page - 1) * 5);
     const [count] = await connection("incidents").count();
